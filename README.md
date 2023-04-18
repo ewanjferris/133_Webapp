@@ -7,6 +7,6 @@ Framework: Codeigniter4
 
 Bestandteile der Seite:
 (Sind je ein Meilenstein)
-Login
-Registrieren
-Schulplannungsapp -> Kalender
+Login,
+Registrieren,
+Schulplannungsapp -> Kalender,
