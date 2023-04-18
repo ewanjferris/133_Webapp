@@ -9,4 +9,8 @@ Bestandteile der Seite:
 (Sind je ein Meilenstein)
 Login,
 Registrieren,
-Schulplannungsapp -> Kalender,
+Schulplannungsapp -> Kalender
+Profil
+
+DB: MySQl
+Framework: Codeigniter
