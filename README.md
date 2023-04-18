@@ -7,10 +7,11 @@ Framework: Codeigniter4
 
 Bestandteile der Seite:
 (Sind je ein Meilenstein)
-Login,
-Registrieren,
-Schulplannungsapp -> Kalender
-Profil
+Login(Ewan),
+Registrieren(Neo),
+Schulplannungsapp -> Kalender (Neo), 
+Profil (Ewan),
+Design (Ewan)
 
 DB: MySQl
 Framework: Codeigniter
