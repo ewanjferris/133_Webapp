@@ -5,7 +5,7 @@ use App\Models\UserModel;
 use CodeIgniter\I18n\Time;
 
 //was extending MainController tua dies später ändru
-class LoginController extends BaseController
+class LoginController extends MainController
 {
 	public function register(){
         return view('Login/register');

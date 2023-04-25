@@ -47,9 +47,9 @@
 					<input type="password" name="pass_confirm" placeholder="Geben Sie Ihr Passwort nochmals ein">
 				</div>			
 				<div class="">
-					<h10 class="float-start">* Ist erforderlich</h10>
+					<h10 class="float-start">*Ist erforderlich</h10>
 					<h10 class="float-start">Passwort muss mindestens 7 Zeichen enthalten</h10>
-					<a class="float-start" href="<?php echo site_url('login'); ?>">Sie haben bereits ein Konto? Hier einloggen</a>
+					<a class="float-start" href="<?php echo base_url('/ci4/public/login'); ?>">Sie haben bereits ein Konto? Hier einloggen</a>
 					<div>
 						<button class="btn btn-primary btn-margin-top" type="submit">Register</button>
 					</div>
