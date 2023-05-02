@@ -66,7 +66,7 @@ class LoginController extends MainController
         ];
 		$rules = [
 			'user_name' => 'required|is_unique[users.user_name]',
-			'pass' => 'required|min_length[7]',
+			'pass' => 'required|min_length[70]|max_length[73]',
 			'pass_confirm' => 'required',
 		];
 		if ($this->validate($rules)  && $pass_confirm === $pass) {
