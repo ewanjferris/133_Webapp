@@ -37,6 +37,16 @@ $routes->post('/submit_register', 'LoginController::submit_register');
 
 //Login Routes
 $routes->get('/login', 'LoginController::login');
+$routes->post('/process_login', 'LoginController::process_login');
+
+//Main Routes
+$routes->get('/main', 'MainController::main');
+$routes->post('/main', 'MainController::main');
+$routes->get('/destroy_session', 'MainController::destroy_session');
+$routes->post('/create_post', 'MainController::create_post');
+$routes->post('/get_posts', 'MainController::get_posts');
+$routes->post('/delete_post', 'MainController::delete_post');
+$routes->post('/edit_post', 'MainController::edit_post');
 
 
 /*

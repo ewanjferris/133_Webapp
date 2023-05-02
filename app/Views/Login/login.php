@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Schulplanung</title>
+    <!-- base_url() = localhost/-->
     <link rel="stylesheet" href="<?php echo base_url('ci4/public/assets/css/style.css');?>">
    
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
@@ -42,7 +43,7 @@
 					<button class="btn btn-primary btn-margin-top" type="submit">Login</button>
 				</div>
 				<div class="">
-					<a class="float-start" href="<?php echo site_url('register'); ?>">Haben Sie noch kein Konto? Hier registrieren</a>
+					<a class="float-start" href="<?php echo base_url('/ci4/public/register'); ?>" >Haben Sie noch kein Konto? Hier registrieren</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
