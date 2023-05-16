@@ -86,7 +86,7 @@
         </div>
           <div class="month-list"></div>
         </div>
-      <div>
+      <div class="all_posts">
         <form id="date_form" action="get_posts" method="post">
           <input id="datepicker" type="date" hidden name="selected_date" value="<?php echo $session->selected_date ?>" >
           <input type="submit" style="visibility: hidden;"></input>

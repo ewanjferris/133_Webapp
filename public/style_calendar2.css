@@ -305,4 +305,8 @@ body {
     width: 0;
     height: 0;
   }
+}
+.all_posts {
+  margin-left: auto;
+  margin-right: 0;
 }/*# sourceMappingURL=style_calendar2.css.map */
