@@ -13,6 +13,7 @@ class LoginController extends MainController
         }
 
         $ch = curl_init();
+
         curl_setopt($ch, CURLOPT_URL,"https://challenges.cloudflare.com/turnstile/v0/siteverify");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS,
