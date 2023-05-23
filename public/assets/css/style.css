@@ -8,24 +8,24 @@
   .btn-margin-top{
     margin-top: 10px;
   }
-  
+
   body{
     background-size: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-  
+
     display: flex;
     justify-content: center;
     align-items: center;
     height: auto;
     flex-direction: column;
   }
-  
+
   h2{
     text-align:  center;
     margin-bottom: 40px;
   }
-  
+
   input {
     display: black;
     border: 2px solid #ccc;
@@ -34,13 +34,13 @@
     margin: 10px auto ;
     border-radius: 5px;
   }
-  
+
   label{
     color: #888;
     font-size: 18px;
     padding: 10px;
   }
-  
+
   button{
     float: right;
     background: #555;
@@ -49,25 +49,25 @@
     margin-right: 10px;
     white-space: normal;
   }
-  
+
   button:hover{
     opacity: .7;
   }
-  
+
   .error {
     background: #F2DEDE;
     color: #A94442;
     padding: 10px;
     width: 95%;
     border-radius: 5px;
-  
+
   }
-  
+
   h1{
     text-align: center;
     color: #fff;
   }
-  
+
   a{
     float: right;
     background: white;
@@ -77,8 +77,15 @@
     margin-right: 10px;
     text-decoration: none;
   }
-  
+
   a:hover{
       opacity: .7;
   }
-  
+
+  .cf-turnstile {
+    display: flex;
+  }
+
+  .cf-turnstile iframe {
+    margin: 16px auto;
+  }

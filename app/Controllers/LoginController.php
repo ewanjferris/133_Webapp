@@ -7,6 +7,24 @@ use CodeIgniter\I18n\Time;
 //was extending MainController tua dies später ändru
 class LoginController extends MainController
 {
+    public function validate_captcha(string $response): bool {
+        if ($response === "") {
+            return false;
+        }
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,"https://challenges.cloudflare.com/turnstile/v0/siteverify");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,
+            "secret=" . env("captcha.secret") . "&response=" . urlencode($response));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $ch_output = curl_exec($ch);
+        curl_close($ch);
+
+        return json_decode($ch_output)->success == true;
+    }
+
 	public function register(){
         return view('Login/register');
     }
@@ -18,34 +36,39 @@ class LoginController extends MainController
 	public function process_login(){
 		$user_name = $this->request->getVar('user_name');
 		$pass = $this->request->getVar('pass');
+        $captcha_response = $this->request->getVar('cf-turnstile-response');
 		$data = array();
-		$data['hashed_pass'] = password_hash($pass, PASSWORD_DEFAULT);
-		$db = db_connect();
-		$query = $db->query("SELECT id, user_name, pass
+
+        if ($this->validate_captcha($captcha_response)) {
+            $data['hashed_pass'] = password_hash($pass, PASSWORD_DEFAULT);
+            $db = db_connect();
+            $query = $db->query("SELECT id, user_name, pass
 							FROM users
 							WHERE user_name='$user_name'");
-		$num_rows = $query->getNumRows();
-		$row = $query->getRow();
-		if($num_rows ===1){
-			$pass_db = $row->pass;
-			$id_db = $row->id;
-			if(password_verify($pass,$pass_db) ===true){
-				$session = session();
-				//$todays_date = Time::now('Europe/Zurich');
-				$todays_date = date('Y-m-d');
-				$newdata = [
-					's_user_name'  => $user_name,
-					's_id'     => $id_db,
-					'selected_date' => $todays_date,
-					'logged_in' => true,
-				];
-				$session->set($newdata);			
-				return $this->main();
-			}
-			$session = session();
-			$session->login_unsuccessful = true;
-			return $this->login();
-		}
+            $num_rows = $query->getNumRows();
+            $row = $query->getRow();
+            if($num_rows ===1){
+                $pass_db = $row->pass;
+                $id_db = $row->id;
+                if(password_verify($pass,$pass_db) ===true){
+                    $session = session();
+                    //$todays_date = Time::now('Europe/Zurich');
+                    $todays_date = date('Y-m-d');
+                    $newdata = [
+                        's_user_name'  => $user_name,
+                        's_id'     => $id_db,
+                        'selected_date' => $todays_date,
+                        'logged_in' => true,
+                    ];
+                    $session->set($newdata);
+                    return $this->main();
+                }
+                $session = session();
+                $session->login_unsuccessful = true;
+                return $this->login();
+            }
+        }
+
 		$session = session();
 		$session->login_unsuccessful = true;
 		return $this->login();
@@ -54,30 +77,34 @@ class LoginController extends MainController
 	public function submit_register(){
 		$pass = $this->request->getVar('pass');
 		$pass_confirm = $this->request->getVar('pass_confirm');
-		$data_pass = array();		
-		$data_pass['hashed_pass'] = password_hash($pass, PASSWORD_DEFAULT);
-        $data = [
-            'user_name' =>$this->request->getVar('user_name'),
-			'pass' =>$data_pass['hashed_pass'],
-            'pass_confirm' =>$this->request->getVar('pass_confirm'),
-            'first_name' =>$this->request->getVar('first_name'),
-			'last_name' =>$this->request->getVar('last_name'),
-			'company' =>$this->request->getVar('company'),
-        ];
-		$rules = [
-			'user_name' => 'required|is_unique[users.user_name]',
-			'pass' => 'required|min_length[7]|max_length[73]',
-			'pass_confirm' => 'required',
-		];
-		if ($this->validate($rules)  && $pass_confirm === $pass) {
-			$user = new UserModel();
-			$user->insert($data);
-			return $this->login();
-        }else{
-			$session = session();
-			$session->register_unsuccessful = true;
-			return $this->register();
-		}
+        $captcha_response = $this->request->getVar('cf-turnstile-response');
+
+        if ($this->validate_captcha($captcha_response)) {
+            $data_pass = array();
+            $data_pass['hashed_pass'] = password_hash($pass, PASSWORD_DEFAULT);
+            $data = [
+                'user_name' =>$this->request->getVar('user_name'),
+                'pass' =>$data_pass['hashed_pass'],
+                'pass_confirm' =>$this->request->getVar('pass_confirm'),
+                'first_name' =>$this->request->getVar('first_name'),
+                'last_name' =>$this->request->getVar('last_name'),
+                'company' =>$this->request->getVar('company'),
+            ];
+            $rules = [
+                'user_name' => 'required|is_unique[users.user_name]',
+                'pass' => 'required|min_length[7]|max_length[73]',
+                'pass_confirm' => 'required',
+            ];
+            if ($this->validate($rules)  && $pass_confirm === $pass) {
+                $user = new UserModel();
+                $user->insert($data);
+                return $this->login();
+            }
+        }
+
+        $session = session();
+        $session->register_unsuccessful = true;
+        return $this->register();
     }
-	
+
 }

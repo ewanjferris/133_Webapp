@@ -7,15 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Schulplanung</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
-	
+
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-	<!--<div class="alert alert-success">
-		<?php ?>
-	</div>
-	<div class="alert alert-danger">
-		
-	</div>-->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
   <body>
     <main>
@@ -45,8 +40,9 @@
 				<div>
 					<label for="">Passwort bestätigen*: </label>
 					<input type="password" name="pass_confirm" placeholder="Geben Sie Ihr Passwort nochmals ein">
-				</div>			
-				<div class="">
+				</div>
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAAFHvTlXyQL5sjPS"></div>
+                <div class="">
 					<h10 class="float-start">*Ist erforderlich</h10>
 					<h10 class="float-start">Passwort muss mindestens 7 Zeichen enthalten</h10>
 					<a class="float-start" href="<?php echo base_url('/login'); ?>">Sie haben bereits ein Konto? Hier einloggen</a>
