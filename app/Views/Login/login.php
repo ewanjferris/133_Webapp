@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Schulplanung</title>
     <!-- base_url() = localhost/-->
-    <link rel="stylesheet" href="<?php echo base_url('ci4/public/assets/css/style.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
    
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -43,7 +43,7 @@
 					<button class="btn btn-primary btn-margin-top" type="submit">Login</button>
 				</div>
 				<div class="">
-					<a class="float-start" href="<?php echo base_url('/ci4/public/register'); ?>" >Haben Sie noch kein Konto? Hier registrieren</a>
+					<a class="float-start" href="<?php echo base_url('/register'); ?>" >Haben Sie noch kein Konto? Hier registrieren</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>

@@ -59,7 +59,7 @@ class LoginController extends MainController
         $data = [
             'user_name' =>$this->request->getVar('user_name'),
 			'pass' =>$data_pass['hashed_pass'],
-            'pass_comfirm' =>$this->request->getVar('pass_comfirm'),
+            'pass_confirm' =>$this->request->getVar('pass_confirm'),
             'first_name' =>$this->request->getVar('first_name'),
 			'last_name' =>$this->request->getVar('last_name'),
 			'company' =>$this->request->getVar('company'),
