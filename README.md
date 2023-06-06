@@ -25,12 +25,6 @@ framework are exposed.
 
 **Please** read the user guide for a better explanation of how CI4 works!
 
-## Contributing
-
-We welcome contributions from the community.
-
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
-
 ## Server Requirements
 
 PHP version 7.4 or higher is required, with the following extensions installed:
